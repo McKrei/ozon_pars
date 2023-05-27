@@ -15,8 +15,8 @@ class Parsing:
     def get_page(self, url):
         '''Получаем html страницы'''
         self.driver.get(url)
-        time.sleep(5)
+        time.sleep(3)
         self.driver.execute_script("window.scrollBy(0,document.body.scrollHeight)")
-        time.sleep(2)
+        time.sleep(1)
         page_source = self.driver.page_source
         return page_source
