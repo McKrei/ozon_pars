@@ -18,17 +18,17 @@ def get_url():
 def search_and_save_data(urls, start):
     parsing = Parsing()
     for url in urls:
+        time_start = time.time()
         page = parsing.get_page('https://www.ozon.ru' + url)
         name = re.findall(r'\d+', url)[-1]
         save_page(page, name)
-        print(f'{start} - {url}')
+        print(f'time {time.time() - time_start:.1f}: {start} - {url}')
         start += 1
     parsing.driver.quit()
 
 
 def main(start, end):
     all_url = get_url()
-    # chunks = [all_url[i:i+chunk_size] for i in range(0, len(all_url), chunk_size)]
     search_and_save_data(all_url[start:end], start)
 
 if __name__ == '__main__':
