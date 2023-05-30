@@ -1,6 +1,6 @@
 import time
 import undetected_chromedriver.v2 as uc
-
+from selenium.webdriver.common.by import By
 
 class Parsing:
     '''Класс для сохранения состояния драйвера и получения html страницы'''
@@ -15,6 +15,9 @@ class Parsing:
         self.driver.get(url)
         time.sleep(3)
         self.driver.execute_script("window.scrollBy(0,document.body.scrollHeight)")
-        time.sleep(5)
+        time.sleep(3)
+        self.driver.execute_script("window.scrollBy(0,document.body.scrollHeight)")
+        time.sleep(3)
         page_source = self.driver.page_source
         return page_source
+
