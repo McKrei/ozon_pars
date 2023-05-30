@@ -25,12 +25,10 @@ def save_data_to_csv(data) -> list[list]:
         for item in data:
             file.write('|'.join(map(str, item)) + '\n')
 
-
 columns = [
     "Название",
     "ссылка на товар",
 ]
-
 
 def main(start, end):
     save_data_to_csv([columns])
@@ -42,6 +40,7 @@ def main(start, end):
         data = get_all_data_page(page)
         save_data_to_csv(data)
     parsing.driver.quit()
+
 
 if __name__ == '__main__':
     start, end = map(int, sys.argv[1:])
